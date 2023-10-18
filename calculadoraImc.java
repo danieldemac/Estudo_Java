@@ -13,20 +13,33 @@ public class calculadoraImc {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("-|--|--|--|--|--|--|--|--|-");
-        System.out.println("Calculadora IMC - By Daniel Cabral");
-        System.out.println("-|--|--|--|--|--|--|--|--|-");
-        System.out.println("Digite seu nome: ");
-        String nome = scan.nextLine();
 
-        System.out.println("Digite sua altura em metros: ");
-        double altura = scan.nextDouble();
+        while (true) {
+            System.out.println("-|--|--|--|--|--|--|--|--|-");
+            System.out.println("Calculadora IMC - By Daniel Cabral");
+            System.out.println("-|--|--|--|--|--|--|--|--|-");
+            System.out.println("Digite seu nome: ");
+            String nome = scan.nextLine();
 
-        System.out.println("Digite seu peso em Kg: ");
-        double peso = scan.nextDouble();
+            System.out.println("Digite sua altura em metros: ");
+            double altura = scan.nextDouble();
 
-        double imc = calcularIMC(peso, altura);
-        exibirResultadoIMC(nome, imc);
+            System.out.println("Digite seu peso em Kg: ");
+            double peso = scan.nextDouble();
+
+            double imc = calcularIMC(peso, altura);
+            exibirResultadoIMC(nome, imc);
+
+            System.out.println("Deseja fazer outra consulta? (S/N): ");
+            String resposta = scan.next();
+
+            if (!resposta.equalsIgnoreCase("S")) {
+                break; // Sai do loop se a resposta não for "S"
+            }
+
+            // Limpar o buffer do scanner
+            scan.nextLine();
+        }
     }
 
     public static double calcularIMC(double peso, double altura) {
